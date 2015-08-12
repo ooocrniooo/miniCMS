@@ -18,6 +18,8 @@ Route::get('home', 'HomeController@index');
 Route::get('pages/add', 'HomeController@pagesAdd');
 Route::get('pages/edit', 'HomeController@pagesEdit');
 Route::post('pages/save', 'HomeController@pagesSave');
+Route::post('admin/upload', ['as' => 'admin.upload', 'uses' => 'HomeController@upload']);
+
 Route::get('pages/show', 'WelcomeController@pagesShow');
 
 Route::get('news/add', 'HomeController@newsAdd');
@@ -33,3 +35,5 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+

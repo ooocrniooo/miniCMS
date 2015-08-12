@@ -33,7 +33,18 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/">Home</a></li>
+					@if (Auth::guest())
+						<li><a href="/">Home</a></li>
+						<li><a href="/">Show Page</a></li>
+						<li><a href="/">Show News</a></li>
+						<li><a href="/">Show Events</a></li>
+					@else
+						<li><a href="/">Home</a></li>
+						<li><a href="/">Show Page</a></li>
+						<li><a href="/">Show News</a></li>
+						<li><a href="/">Show Events</a></li>
+					@endif
+
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

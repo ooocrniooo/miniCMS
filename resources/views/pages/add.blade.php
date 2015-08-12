@@ -24,8 +24,8 @@
                             <div class="col-md-2">
                                 {!! Form::label('title', 'Title') !!}
                             </div>
-                            <div class="col-md-6">
-                                {!! Form::text('title', null, ['class' => 'textpage']) !!}
+                            <div class="col-md-10">
+                                {!! Form::text('title', null, ['class' => 'textpagetitle']) !!}
                             </div>
                         </div>
 
@@ -47,12 +47,21 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding-top: 30px;">
                             <div class="col-md-2">
                             {!! Form::label('description', 'Description') !!}
                             </div>
                             <div class="col-md-10">
-                            {!! Form::textarea('description'); !!}
+                            {!! Form::textarea('description', null, ['class'=>'textpagedescription']); !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                {!! Form::label('keywords', 'Keywords') !!}
+                            </div>
+                            <div class="col-md-10">
+                                {!! Form::text('keywords', null, ['class' => 'textpagetitle']) !!}
                             </div>
                         </div>
 
@@ -87,12 +96,62 @@
 
                         <div class="col-md-12">
                             {!! Form::submit('Click Me!'); !!}
+                            {!! Form::close() !!}
                         </div>
-                        {!! Form::close() !!}
+
+                        <div class="col-lg-12 text-center">
+                            <form action="pages/upload" class="dropzone" id="upload">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                            </form>
+                        </div>
+
                     </div>
+
+
                 </div>
             </div>
         </div>
     </div>
 
+
+    <script>
+        $(document).ready(function() {
+
+            //Dropzone.js Options - Upload an image via AJAX.
+            Dropzone.options.myDropzone = {
+                uploadMultiple: false,
+                // previewTemplate: '',
+                addRemoveLinks: true,
+                // maxFiles: 1,
+                dictDefaultMessage: '',
+                init: function() {
+                    this.on("addedfile", function(file) {
+                        // console.log('addedfile...');
+                    });
+                    this.on("thumbnail", function(file, dataUrl) {
+                        // console.log('thumbnail...');
+                        $('.dz-image-preview').hide();
+                        $('.dz-file-preview').hide();
+                    });
+                    this.on("success", function(file, res) {
+                        console.log('upload success...');
+                        $('#img-thumb').attr('src', res.path);
+                        $('input[name="pic_url"]').val(res.path);
+                    });
+                }
+            };
+            var myDropzone = new Dropzone("#my-dropzone");
+
+            $('#upload-submit').on('click', function(e) {
+                e.preventDefault();
+                //trigger file upload select
+                $("#my-dropzone").trigger('click');
+            });
+
+        });
+
+        //we want to manually init the dropzone.
+        Dropzone.autoDiscover = false;
+
+    </script>
 @endsection

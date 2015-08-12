@@ -15,9 +15,9 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('pages/add', 'HomeController@pageAdd');
-Route::get('pages/edit', 'HomeController@pageEdit');
-Route::get('pages/show', 'WelcomeController@pageShow');
+Route::get('pages/add', 'HomeController@pagesAdd');
+Route::get('pages/edit', 'HomeController@pagesEdit');
+Route::get('pages/show', 'WelcomeController@pagesShow');
 
 Route::get('news/add', 'HomeController@newsAdd');
 Route::get('news/edit', 'HomeController@newsEdit');

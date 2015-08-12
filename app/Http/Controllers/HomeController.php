@@ -33,12 +33,12 @@ class HomeController extends Controller {
 		return view('home');
 	}
 
-	public function pageAdd(){
+	public function pagesAdd(){
 		return view('pages/add');
 	}
 
-	public function pageEdit(){
-		return view('pages/add');
+	public function pagesEdit(){
+		return view('pages/edit');
 	}
 
 	public function newsAdd(){
@@ -46,7 +46,7 @@ class HomeController extends Controller {
 	}
 
 	public function newsEdit(){
-		return view('news/add');
+		return view('news/edit');
 	}
 
 	public function eventsAdd(){

@@ -41,6 +41,10 @@ class HomeController extends Controller {
 		return view('pages/edit');
 	}
 
+	public function pagesSave(){
+			return view('pages/edit');
+		}
+
 	public function newsAdd(){
 		return view('news/add');
 	}

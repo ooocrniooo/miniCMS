@@ -6229,5 +6229,8 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+.textpage {
+  border-radius: 3px;
+}
 
 /*# sourceMappingURL=app.css.map */

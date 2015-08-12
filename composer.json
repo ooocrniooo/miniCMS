@@ -1,11 +1,12 @@
 {
 	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"description": "miniCMS by ooocrniooo",
+	"keywords": ["framework", "laravel", "miniCMS"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.*"
+		"laravel/framework": "5.0.*",
+	  	"laravelcollective/html": "~5.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

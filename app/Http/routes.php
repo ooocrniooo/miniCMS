@@ -17,10 +17,12 @@ Route::get('home', 'HomeController@index');
 
 Route::get('pages/add', 'HomeController@pagesAdd');
 Route::get('pages/edit', 'HomeController@pagesEdit');
+Route::post('pages/save', 'HomeController@pagesSave');
 Route::get('pages/show', 'WelcomeController@pagesShow');
 
 Route::get('news/add', 'HomeController@newsAdd');
 Route::get('news/edit', 'HomeController@newsEdit');
+Route::get('news/save', 'HomeController@newsSave');
 Route::get('news/show', 'WelcomeController@newsShow');
 
 Route::get('events/add', 'HomeController@eventsAdd');

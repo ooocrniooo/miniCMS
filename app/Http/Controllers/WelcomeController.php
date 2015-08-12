@@ -33,4 +33,15 @@ class WelcomeController extends Controller {
 		return view('welcome');
 	}
 
+	public function pagesShow(){
+		return view('pages/show');
+	}
+
+	public function newsShow(){
+		return view('news/show');
+	}
+
+	public function eventsShow(){
+		return view('events/show');
+	}
 }

@@ -33,4 +33,27 @@ class HomeController extends Controller {
 		return view('home');
 	}
 
+	public function pageAdd(){
+		return view('pages/add');
+	}
+
+	public function pageEdit(){
+		return view('pages/add');
+	}
+
+	public function newsAdd(){
+		return view('news/add');
+	}
+
+	public function newsEdit(){
+		return view('news/add');
+	}
+
+	public function eventsAdd(){
+		return view('events/add');
+	}
+
+	public function eventsEdit(){
+		return view('events/edit');
+	}
 }

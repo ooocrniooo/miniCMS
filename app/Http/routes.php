@@ -21,6 +21,7 @@ Route::post('pages/save', 'HomeController@pagesSave');
 Route::get('pages/list', 'HomeController@pagesList');
 Route::post('admin/upload', ['as' => 'admin.upload', 'uses' => 'HomeController@upload']);
 
+
 Route::get('pages/show', 'WelcomeController@pagesShow');
 
 Route::get('news/add', 'HomeController@newsAdd');

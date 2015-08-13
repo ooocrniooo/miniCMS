@@ -5,8 +5,9 @@
     <script type="text/javascript">
         tinymce.init({
             selector : "textarea#pagecontent",
-            plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste"],
-            toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste jbimages"],
+            toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+            relative_urls: false
         });
     </script>
 
@@ -21,6 +22,7 @@
                         {!! Form::open([
                         'url' => 'pages/save',
                         'role' => 'form',
+                        'files' =>true,
                         'method' => 'post',
                         'enctype' => 'multipart/form-data',
                         'style'=>'overflow: auto'
@@ -104,16 +106,25 @@
                             </div>
                         </div>
 
+                        <div class="col-md-12 l-gutter">
+                            <label>Featured Picture</label>
+                            {!! Form::file('image') !!}
+                            <p class="errors">{!!$errors->first('image')!!}</p>
+                            @if(Session::has('error'))
+                                <p class="errors">{!! Session::get('error') !!}</p>
+                            @endif
+                        </div>
+
                         <div class="col-md-12 bottom-l-gutter">
                             {!! Form::submit('Save!', ['class' => 'btnsave pull-right']); !!}
                             {!! Form::close() !!}
                         </div>
 
-                        <div class="col-lg-12 text-center">
-                            <form action="pages/upload" class="dropzone" id="upload">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                            </form>
-                        </div>
+                        {{--<div class="col-lg-12 text-center">--}}
+                            {{--<form action="pages/upload" class="dropzone" id="upload">--}}
+                                {{--<input type="hidden" name="_token" value="{{ csrf_token() }}" />--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
 
                     </div>
 
@@ -124,44 +135,44 @@
     </div>
 
 
-    <script>
-        $(document).ready(function() {
+    {{--<script>--}}
+        {{--$(document).ready(function() {--}}
 
-            //Dropzone.js Options - Upload an image via AJAX.
-            Dropzone.options.myDropzone = {
-                uploadMultiple: false,
-                // previewTemplate: '',
-                addRemoveLinks: true,
-                // maxFiles: 1,
-                dictDefaultMessage: '',
-                init: function() {
-                    this.on("addedfile", function(file) {
-                        // console.log('addedfile...');
-                    });
-                    this.on("thumbnail", function(file, dataUrl) {
-                        // console.log('thumbnail...');
-                        $('.dz-image-preview').hide();
-                        $('.dz-file-preview').hide();
-                    });
-                    this.on("success", function(file, res) {
-                        console.log('upload success...');
-                        $('#img-thumb').attr('src', res.path);
-                        $('input[name="pic_url"]').val(res.path);
-                    });
-                }
-            };
-            var myDropzone = new Dropzone("#my-dropzone");
+            {{--//Dropzone.js Options - Upload an image via AJAX.--}}
+            {{--Dropzone.options.myDropzone = {--}}
+                {{--uploadMultiple: false,--}}
+                {{--// previewTemplate: '',--}}
+                {{--addRemoveLinks: true,--}}
+                {{--// maxFiles: 1,--}}
+                {{--dictDefaultMessage: '',--}}
+                {{--init: function() {--}}
+                    {{--this.on("addedfile", function(file) {--}}
+                        {{--// console.log('addedfile...');--}}
+                    {{--});--}}
+                    {{--this.on("thumbnail", function(file, dataUrl) {--}}
+                        {{--// console.log('thumbnail...');--}}
+                        {{--$('.dz-image-preview').hide();--}}
+                        {{--$('.dz-file-preview').hide();--}}
+                    {{--});--}}
+                    {{--this.on("success", function(file, res) {--}}
+                        {{--console.log('upload success...');--}}
+                        {{--$('#img-thumb').attr('src', res.path);--}}
+                        {{--$('input[name="pic_url"]').val(res.path);--}}
+                    {{--});--}}
+                {{--}--}}
+            {{--};--}}
+            {{--var myDropzone = new Dropzone("#my-dropzone");--}}
 
-            $('#upload-submit').on('click', function(e) {
-                e.preventDefault();
-                //trigger file upload select
-                $("#my-dropzone").trigger('click');
-            });
+            {{--$('#upload-submit').on('click', function(e) {--}}
+                {{--e.preventDefault();--}}
+                {{--//trigger file upload select--}}
+                {{--$("#my-dropzone").trigger('click');--}}
+            {{--});--}}
 
-        });
+        {{--});--}}
 
-        //we want to manually init the dropzone.
-        Dropzone.autoDiscover = false;
+        {{--//we want to manually init the dropzone.--}}
+        {{--Dropzone.autoDiscover = false;--}}
 
-    </script>
+    {{--</script>--}}
 @endsection

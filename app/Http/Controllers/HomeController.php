@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 use Input;
+
+use Session;
+
+
 use Illuminate\Http\Request;
 use App\Pages;
 
@@ -48,8 +52,6 @@ class HomeController extends Controller {
 
 	public function pagesSave(Request $request){
 
-
-
 		if($request->get('pageoption') == 'add') {
 //			dd('ADD');
 			$page = Pages::create([
@@ -63,10 +65,26 @@ class HomeController extends Controller {
 				'category' => $request->get('category'),
 				'forms' => '0'
 			]);
+			// checking file is valid.
+			if (Input::file('image')->isValid()) {
+				$destinationPath = 'images/featured'; // upload path
+				$extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+//				$fileName = rand(11111,99999).'.'.$extension; // renameing image
+				$fileName = $page->id.'-'.$request->get('slug').'.'.$extension; // renameing image
+
+				Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+				// sending back with message
+				Session::flash('success', 'Upload successfully');
+//				return Redirect::to('upload');
+				Pages::where('id', '=', $page->id)->first();
+				$page->image = $fileName;
+				$page->save();
+			}
 		}
 		if($request->get('pageoption') == 'edit') {
-//			dd('nista');
-			$page = Pages::find(1)->first();
+//			dd($request);
+			$page = Pages::where('id', '=', $request->get('pageid'))->first();
+
 			$page->title = $request->get('title');
 			$page->slug = $request->get('slug');
 			$page->content = $request->get('content');
@@ -101,17 +119,21 @@ class HomeController extends Controller {
 		return view('events/edit');
 	}
 
-	public function upload() {
-		if(Input::hasFile('file')) {
-			//upload an image to the /img/tmp directory and return the filepath.
-			$file = Input::file('file');
-			$tmpFilePath = '/img/tmp/';
-			$tmpFileName = time() . '-' . $file->getClientOriginalName();
-			$file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
-			$path = $tmpFilePath . $tmpFileName;
-			return response()->json(array('path'=> $path), 200);
-		} else {
-			return response()->json(false, 200);
-		}
-	}
+
+
+
+
+//	public function upload() {
+//		if(Input::hasFile('file')) {
+//			//upload an image to the /img/tmp directory and return the filepath.
+//			$file = Input::file('file');
+//			$tmpFilePath = '/img/tmp/';
+//			$tmpFileName = time() . '-' . $file->getClientOriginalName();
+//			$file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
+//			$path = $tmpFilePath . $tmpFileName;
+//			return response()->json(array('path'=> $path), 200);
+//		} else {
+//			return response()->json(false, 200);
+//		}
+//	}
 }

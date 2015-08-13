@@ -5,8 +5,9 @@
     <script type="text/javascript">
         tinymce.init({
             selector : "textarea#pagecontent",
-            plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste"],
-            toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste jbimages"],
+            toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+            relative_urls: false
         });
     </script>
 
@@ -20,6 +21,7 @@
 
                         {!! Form::open(array('url' => 'pages/save/')) !!}
                         <input type="hidden" name="pageoption" value="edit">
+                        <input type="hidden" name="pageid" value="{{$page->id}}">
                         <div class="col-md-12">
                             <div class="col-md-2">
                                 {!! Form::label('title', 'Title') !!}
@@ -92,6 +94,13 @@
                                 {!! Form::radio('featured', '0'); !!}
                                 {!! Form::radio('featured', '0'); !!}
                             </div>
+                        </div>
+
+                        <div class="col-md-12 top-l-gutter">
+                            <label>Featured Picture</label>
+                            @if($page->image != '')
+                            <img class="img-responsive" src="/images/featured/{{ $page->image }}">
+                                @endif
                         </div>
 
                         <div class="col-md-12">

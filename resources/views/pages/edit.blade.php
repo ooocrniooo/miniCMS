@@ -18,14 +18,14 @@
 
                     <div class="panel-body">
 
-                        {!! Form::open(array('url' => 'pages/save')) !!}
-
+                        {!! Form::open(array('url' => 'pages/save/')) !!}
+                        <input type="hidden" name="pageoption" value="edit">
                         <div class="col-md-12">
                             <div class="col-md-2">
                                 {!! Form::label('title', 'Title') !!}
                             </div>
                             <div class="col-md-10">
-                                {!! Form::text('title', null, ['class' => 'textpagetitle']) !!}
+                                {!! Form::text('title', $page->title, ['class' => 'textpagetitle']) !!}
                             </div>
                         </div>
 
@@ -34,7 +34,7 @@
                                 {!! Form::label('slug', 'Slug') !!}
                             </div>
                             <div class="col-md-6">
-                                {!! Form::text('slug', null, ['class' => 'textpage']) !!}
+                                {!! Form::text('slug', $page->slug, ['class' => 'textpage']) !!}
                             </div>
                         </div>
 
@@ -43,7 +43,7 @@
                                 {!! Form::label('content', 'Content') !!}
                             </div>
                             <div class="col-md-10">
-                                {!! Form::textarea('content', null, ['id'=>'pagecontent']); !!}
+                                {!! Form::textarea('content', $page->content, ['id'=>'pagecontent']); !!}
                             </div>
                         </div>
 
@@ -52,7 +52,7 @@
                                 {!! Form::label('description', 'Description') !!}
                             </div>
                             <div class="col-md-10">
-                                {!! Form::textarea('description', null, ['class'=>'textpagedescription']); !!}
+                                {!! Form::textarea('description', $page->description, ['class'=>'textpagedescription']); !!}
                             </div>
                         </div>
 
@@ -61,7 +61,16 @@
                                 {!! Form::label('category', 'Category') !!}
                             </div>
                             <div class="col-md-6">
-                                {!! Form::text('category', null, ['class' => 'textpage']) !!}
+                                {!! Form::text('category', $page->category, ['class' => 'textpage']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                {!! Form::label('keywords', 'Keywords') !!}
+                            </div>
+                            <div class="col-md-6">
+                                {!! Form::text('keywords', $page->keywords, ['class' => 'textpage']) !!}
                             </div>
                         </div>
 
@@ -86,7 +95,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            {!! Form::submit('Click Me!'); !!}
+                            {!! Form::submit('Save!', ['class' => 'btnsave pull-right']); !!}
                         </div>
                         {!! Form::close() !!}
                     </div>

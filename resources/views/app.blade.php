@@ -36,7 +36,7 @@
 				<ul class="nav navbar-nav">
 					@if (Auth::guest())
 						<li><a href="/">Home</a></li>
-						<li><a href="/">Show Page</a></li>
+						<li><a href="/pages/list">Show Pages</a></li>
 						<li><a href="/">Show News</a></li>
 						<li><a href="/">Show Events</a></li>
 					@else
@@ -49,7 +49,14 @@
 								<li><a href="/events/add">Add Events</a></li>
 							</ul>
 						</li>
-
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="/pages/list">List Pages</a></li>
+								<li><a href="/news/list">List News</a></li>
+								<li><a href="/events/list">List Events</a></li>
+							</ul>
+						</li>
 					@endif
 				</ul>
 

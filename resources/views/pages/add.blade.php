@@ -18,8 +18,14 @@
 
                     <div class="panel-body">
 
-                        {!! Form::open(array('url' => 'pages/save')) !!}
-
+                        {!! Form::open([
+                        'url' => 'pages/save',
+                        'role' => 'form',
+                        'method' => 'post',
+                        'enctype' => 'multipart/form-data',
+                        'style'=>'overflow: auto'
+                        ]) !!}
+                        <input type="hidden" name="pageoption" value="add">
                         <div class="col-md-12">
                             <div class="col-md-2">
                                 {!! Form::label('title', 'Title') !!}
@@ -34,7 +40,7 @@
                                 {!! Form::label('slug', 'Slug') !!}
                             </div>
                             <div class="col-md-6">
-                                {!! Form::text('slug', null, ['class' => 'textpage']) !!}
+                                {!! Form::text('slug', null, ['class' => 'form-control textpage', 'name' => 'slug']) !!}
                             </div>
                         </div>
 
@@ -52,7 +58,7 @@
                             {!! Form::label('description', 'Description') !!}
                             </div>
                             <div class="col-md-10">
-                            {!! Form::textarea('description', null, ['class'=>'textpagedescription']); !!}
+                            {!! Form::textarea('description', null, ['class'=>'form-control textpagedescription']); !!}
                             </div>
                         </div>
 
@@ -61,7 +67,7 @@
                                 {!! Form::label('keywords', 'Keywords') !!}
                             </div>
                             <div class="col-md-10">
-                                {!! Form::text('keywords', null, ['class' => 'textpagetitle']) !!}
+                                {!! Form::text('keywords', null, ['class' => 'form-control textpagetitle']) !!}
                             </div>
                         </div>
 
@@ -70,7 +76,7 @@
                             {!! Form::label('category', 'Category') !!}
                             </div>
                             <div class="col-md-6">
-                                {!! Form::text('category', null, ['class' => 'textpage']) !!}
+                                {!! Form::text('category', null, ['class' => 'form-control textpage']) !!}
                             </div>
                         </div>
 
@@ -79,7 +85,9 @@
                             {!! Form::label('visible', 'Visible') !!}
                             </div>
                             <div class="col-md-6">
-                            {!! Form::radio('visible', '0'); !!}
+                                Yes
+                            {!! Form::radio('visible', '1'); !!}
+                                No
                             {!! Form::radio('visible', '0'); !!}
                             </div>
                         </div>
@@ -89,13 +97,15 @@
                             {!! Form::label('featured', 'Featured') !!}
                             </div>
                             <div class="col-md-6">
-                            {!! Form::radio('featured', '0'); !!}
+                                Yes
+                            {!! Form::radio('featured', '1'); !!}
+                                No
                             {!! Form::radio('featured', '0'); !!}
                             </div>
                         </div>
 
-                        <div class="col-md-12">
-                            {!! Form::submit('Click Me!'); !!}
+                        <div class="col-md-12 bottom-l-gutter">
+                            {!! Form::submit('Save!', ['class' => 'btnsave pull-right']); !!}
                             {!! Form::close() !!}
                         </div>
 

@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 use Input;
+use Illuminate\Http\Request;
+use App\Pages;
 
 class HomeController extends Controller {
 
@@ -38,12 +40,49 @@ class HomeController extends Controller {
 		return view('pages/add');
 	}
 
-	public function pagesEdit(){
-		return view('pages/edit');
+	public function pagesEdit($id){
+		$page = Pages::where('id', '=', $id)->first();
+
+		return view('pages/edit', compact('page'));
 	}
 
-	public function pagesSave(){
-			return view('pages/edit');
+	public function pagesSave(Request $request){
+
+
+
+		if($request->get('pageoption') == 'add') {
+//			dd('ADD');
+			$page = Pages::create([
+				'title' => $request->get('title'),
+				'slug' => $request->get('slug'),
+				'content' => $request->get('content'),
+				'description' => $request->get('description'),
+				'keywords' => $request->get('keywords'),
+				'visible' => $request->get('visible'),
+				'featured' => $request->get('featured'),
+				'category' => $request->get('category'),
+				'forms' => '0'
+			]);
+		}
+		if($request->get('pageoption') == 'edit') {
+//			dd('nista');
+			$page = Pages::find(1)->first();
+			$page->title = $request->get('title');
+			$page->slug = $request->get('slug');
+			$page->content = $request->get('content');
+			$page->description = $request->get('description');
+			$page->keywords = $request->get('keywords');
+			$page->visible = $request->get('visible');
+			$page->featured = $request->get('featured');
+			$page->category = $request->get('category');
+			$page->save();
+		}
+		return view('pages/edit', compact('page'));
+		}
+
+	public function pagesList(){
+		$pages = Pages::all();
+		return view('pages/list', compact('pages'));
 		}
 
 	public function newsAdd(){

@@ -38,7 +38,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">miniCMS for Agency</div>
+				<div class="title">miniCMS for Travel Agency</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>

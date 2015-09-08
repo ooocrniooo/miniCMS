@@ -18,12 +18,12 @@
 var elixir = require('laravel-elixir');
 
 var cmsStyles = [
- "../../assets/vendor/dropzone/dist/dropzone.css",
+ //"../../assets/vendor/dropzone/dist/dropzone.css",
  "../../assets/css/**"
 ];
 
 var cmsScripts = [
- "../../assets/vendor/dropzone/dist/dropzone.js",
+ //"../../assets/vendor/dropzone/dist/dropzone.js",
  "../../assets/js/dropit.js",
  "../../assets/js/**"
 ];

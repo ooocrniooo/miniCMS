@@ -8,7 +8,7 @@
 				<div class="panel-heading">Home</div>
 
 				<div class="panel-body">
-					You are logged in! CRNI iiiiii
+					You are logged in! CRNI iiiiii aaaaaaa
 				</div>
 			</div>
 		</div>

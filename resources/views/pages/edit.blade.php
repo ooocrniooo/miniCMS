@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
     <script type="text/javascript" src="{{ asset('/js/plugins/tinymce/tinymce.min.js') }}"></script>
     <script type="text/javascript">
         tinymce.init({
@@ -10,6 +11,10 @@
             relative_urls: false
         });
     </script>
+    {{--{{ HTML::style('css/basic.css')}}--}}
+    <link href="/css/basic.css" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
+
 
     <div class="container">
         <div class="row">
@@ -99,7 +104,7 @@
                         <div class="col-md-12 top-l-gutter">
                             <label>Featured Picture</label>
                             @if($page->image != '')
-                            <img class="img-responsive" src="/images/featured/{{ $page->image }}">
+                            <img class="img-responsive" style="max-height: 150px" src="/images/featured/{{ $page->image }}">
                                 @endif
                         </div>
 
@@ -111,6 +116,20 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+
+        <form action="/pages/file-upload" class="dropzone" id="my-awesome-dropzone">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        </form>
+
+        {{--<form action="/pages/file-upload" class="dropzone">--}}
+        {{--<div class="fallback">--}}
+            {{--<input name="file" type="file" multiple />--}}
+        {{--</div>--}}
+        {{--</form>--}}
+
     </div>
 
 @endsection

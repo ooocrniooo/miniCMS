@@ -8,7 +8,8 @@
 
 	<link href="/css/app.css" rel="stylesheet">
 	<link href="/css/all.css" rel="stylesheet">
-
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<script src="/js/jquery.min.js"></script>
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -46,7 +47,7 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="/pages/add">Add Page</a></li>
 								<li><a href="/news/add">Add News</a></li>
-								<li><a href="/events/add">Add Events</a></li>
+								<li><a href="/events/add">Add Event</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -57,6 +58,16 @@
 								<li><a href="/events/list">List Events</a></li>
 							</ul>
 						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bookings <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="/management/eventtransfer">List Events</a></li>
+								<li><a href="/management/transtransfer">List Transfers</a></li>
+								<li><a href="#">List Excursions</a></li>
+							</ul>
+						</li>
+
+
 					@endif
 				</ul>
 
@@ -65,6 +76,14 @@
 						<li><a href="/auth/login">Login</a></li>
 						<li><a href="/auth/register">Register</a></li>
 					@else
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Options <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="/options/event">Events</a></li>
+								<li><a href="/options/transferoptions">Transfers</a></li>
+								<li><a href="/options/pages">Pages</a></li>
+							</ul>
+						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
@@ -80,8 +99,10 @@
 	@yield('content')
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	{{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
 	<script src="/js/all.js"></script>
+
+	<script src="/js/transition.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

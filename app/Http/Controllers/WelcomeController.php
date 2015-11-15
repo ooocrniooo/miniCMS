@@ -30,7 +30,8 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+//		return view('template/marina/index');
+		return view('template/shuttletours/index');
 	}
 
 	public function pagesShow(){
